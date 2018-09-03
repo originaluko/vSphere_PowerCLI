@@ -1,0 +1,31 @@
+<extension>
+   <description>
+      <label>vSphere_PowerCLI</label>
+      <summary>vSphere PowerCLI plugin</summary>
+   </description>
+   <key>com.mycompany.vsphere_powercli</key>
+   <company>Ukoticland</company>
+   <version>1.0.0</version>
+   <server>
+      <url>https://whiterose.net:443/~bango/vsphere_powercli_plugin.zip</url>
+      <description>
+         <label>vSphere_PowerCLI</label>
+         <summary>vSphere PowerCLI plugin</summary>
+      </description>
+      <company>Ukoticland</company>
+      <type>HTTPS</type>
+      <adminEmail>ukotic@gmail.com</adminEmail>
+      <serverThumbprint>4F:21:78:71:DB:D4:79:17:F5:A7:38:2B:FA:F8:47:DD:9F:94:AF:DC</serverThumbprint>
+   </server>
+   <client>
+      <version>1.0.0</version>
+      <description>
+         <label>vSphere_PowerCLI</label>
+         <summary>vSphere PowerCLI plugin</summary>
+      </description>
+      <company>Ukoticland</company>
+      <type>vsphere-client-serenity</type>
+      <url>https://whiterose.net:443/~bango/vsphere_powercli_plugin.zip</url>
+   </client>
+   <lastHeartbeatTime>1970-01-01T00:00:00Z</lastHeartbeatTime>
+</extension>

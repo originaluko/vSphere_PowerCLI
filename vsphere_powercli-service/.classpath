@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src/main/java"/>
+	<classpathentry kind="src" output="target/classes" path="src/main/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="VSPHERE_CLIENT_SDK/libs/vsphere-client-lib.jar"/>
+	<classpathentry kind="var" path="VSPHERE_CLIENT_SDK/libs/commons-logging-1.1.1.jar"/>
+   <classpathentry kind="var" path="VSPHERE_CLIENT_SDK/libs/javax.servlet-api-3.0.1.jar"/>
+   <classpathentry kind="var" path="VSPHERE_CLIENT_SDK/libs/spring-web-3.1.4.RELEASE.jar"/>
+	<classpathentry kind="var" path="VSPHERE_CLIENT_SDK/libs/spring-beans-3.1.4.RELEASE.jar"/>
+	<classpathentry kind="var" path="VSPHERE_CLIENT_SDK/libs/spring-context-3.1.4.RELEASE.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

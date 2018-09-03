@@ -1,0 +1,49 @@
+<!doctype html>
+<!-- Copyright (c) 2012-2018 VMware, Inc. All rights reserved. -->
+<html>
+<head>
+   <meta charset="utf-8" />
+   <title>vsphere_plugin main view</title>
+
+   <link rel="stylesheet" href="../assets/css/default.css" media="screen" />
+
+   <!-- Safer not to use CDN links to javascript libraries, the Internet may not be available! -->
+   <script src="../assets/jquery-1.10.2.min.js"></script>
+
+   <script>
+   // Use JQuery's $(document).ready to execute the script when the document is loaded.
+   // This also hides locale variables from the global scope.
+   
+   $(document).ready(function() {
+
+   $("#txt_fqdn").val(localStorage.fqdn);
+   
+	// Function to get input value.
+	  $('#text_value').click(function() {
+        var text_value = $("#txt_fqdn").val() + ":" + $("#txt_port").val();
+        localStorage.fqdn = $("#txt_fqdn").val() ;
+        if(text_value=='') {
+            alert("Please first enter your Container FQDN");
+            }
+            else{
+                $('#url').attr("src", "https://" + (text_value));
+            }
+        });   
+    }); // end $(document).ready
+
+</script>
+</head>
+<body>
+   <!-- The default text is replaced at runtime by localized resources -->
+    <div> 
+        <label>Container FQDN : </label>
+        <input type="text" id="txt_fqdn" name="name" value="" title="Enter in your Container FQDN or IP. e.g. VCSA" placeholder="Container FQDN or IP" />
+        <label>  Port : </label>
+        <input type="text" id="txt_port" name="port" value="4200" title="Changing default value may cause connection issues" placeholder="4200" />
+        <input type="button" id="text_value" value="Connect"/>
+    </div>
+    <br>
+    <iframe name="url" id="url" width=100% height=400></iframe>
+   <br>
+</body>
+</html>

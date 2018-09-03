@@ -1,0 +1,32 @@
+/* Copyright (c) 2012-2018 VMware, Inc. All rights reserved. */
+/*
+ * EXTERNAL ICONS SUPPORT: plugin-icons.css contain "external" icons, i.e. the ones
+ * displayed outside plugin's views, in the main app menus, shortcuts or object lists.
+ * Do not include other CSS rules here!
+ */
+.com_mycompany_vsphere_powercli-addIcon {
+    background: url("../images/addIcon.png");
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin: 1px 4px 0;
+}
+.com_mycompany_vsphere_powercli-editIcon {
+    background: url("../images/editIcon.png");
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin: 1px 4px 0;
+}
+.com_mycompany_vsphere_powercli-pluginIcon {
+    background: url("../images/powercli.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin: 1px 4px 0;
+}

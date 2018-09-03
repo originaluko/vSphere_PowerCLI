@@ -1,0 +1,41 @@
+<!-- Copyright (c) 2012-2018 VMware, Inc. All rights reserved. -->
+<project name="vsphere_powercli-ui" default="make-war-bundle">
+   <description>
+       Ant build script for HTML plugin. It outputs a .war file that can be
+       copied in the "plugins" folder of the plugin-package.
+   </description>
+
+   <!-- Properties specific to this project -->
+   <property name="PROJECT_NAME" value="vsphere_powercli-ui"/>
+
+   <property name="BUILD_DIR" value="${basedir}/target"/>
+   <property name="SRC_DIR" value="${basedir}/src/main"/>
+   <property name="WEBAPP_DIR" value="${basedir}/src/main/webapp"/>
+   <property name="WAR_NAME" value="${PROJECT_NAME}.war"/>
+   <property name="REGEXP1" value="^(.*)\${file.separator}(.*).properties$$"/>
+   <property name="REGEXP2" value="\2_\1.properties"/>
+
+   <!-- clean the generated build files -->
+   <target name="clean"
+          description="==> Do not select this internal target.">
+      <delete dir="${WEBAPP_DIR}/locales"/>
+      <delete dir="${BUILD_DIR}" />
+   </target>
+
+   <!-- Copies the localization files to the locales dir of the plugin -->
+   <target name="compile-resources" description="Copy locales to the new plugin">
+      <copy todir="${WEBAPP_DIR}/locales" failonerror="false">
+         <fileset dir="${SRC_DIR}/locale"/>
+         <mapper type="regexp" from="${REGEXP1}" to="${REGEXP2}"/>
+      </copy>
+   </target>
+
+   <!-- Create the war bundle. -->
+   <target name="make-war-bundle" depends="clean, compile-resources"
+           description="==> This target is not needed within Eclipse, see the SDK Tutorial.">
+       <jar destfile="${BUILD_DIR}/${WAR_NAME}"
+            manifest="${WEBAPP_DIR}/META-INF/MANIFEST.MF"
+            basedir="${WEBAPP_DIR}"/>
+   </target>
+</project>
+

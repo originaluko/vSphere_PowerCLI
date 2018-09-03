@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-Vendor: VMware
+Bundle-Version: 1.0.0
+Tool: Bundlor 1.1.0.RELEASE
+Bundle-Name: vsphere_powercli-service
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.mycompany.vsphere_powercli.vsphere_powercli-service
+Export-Package: com.mycompany.vsphere_powercli.services;version="1.0.0",
+ com.mycompany.vsphere_powercli.mvc;version="1.0.0"
+Import-Package: org.apache.commons.logging;version="1.1.1",
+ com.vmware.vise.data;version="0",
+ com.vmware.vise.data.query;version="0",
+ com.vmware.vise.usersession;version="0",
+ com.vmware.vise.security;version="0",
+ com.vmware.vise.vim.data;version="0",
+ com.google.gson;version="2.3.1",
+ javax.servlet.http;version="3.0",
+ javax.net.ssl;version="0",
+ org.springframework.beans.factory.annotation;version="3.1.4",
+ org.springframework.http;version="3.1.4",
+ org.springframework.stereotype;version="3.1.4",
+ org.springframework.web.bind.annotation;version="3.1.4"

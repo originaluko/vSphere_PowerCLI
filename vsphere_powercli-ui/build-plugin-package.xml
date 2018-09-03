@@ -1,0 +1,38 @@
+<!-- Copyright (c) 2012-2018 VMware, Inc. All rights reserved. -->
+<project name="build-plugin-package" default="build" >
+   <description>
+       Creates the plugin package folder from vsphere_powercli-ui and vsphere_powercli-service:
+             vsphere_powercli
+                  plugin-package.xml
+                  /plugins
+                     gson-2.3.1.jar
+                     vsphere_powercli-ui.war
+                     vsphere_powercli-service.jar
+
+   </description>
+
+   <property environment="env"/>
+   <property name="VSPHERE_SDK_HOME" value="${env.VSPHERE_SDK_HOME}"/>
+   <property name="BUILD_DIR" value="${basedir}/target"/>
+   <property name="SERVICE_DIR" value="${basedir}/../vsphere_powercli-service"/>
+
+   <target name="build" depends="buildUiWar, buildServiceJar, createPluginPackageDir"/>
+
+   <target name="buildUiWar">
+      <ant antfile="${basedir}/build-war.xml" dir="${basedir}" inheritAll="false"/>
+   </target>
+
+   <target name="buildServiceJar">
+      <ant antfile="${SERVICE_DIR}/build-java.xml" dir="${SERVICE_DIR}" inheritAll="false"/>
+   </target>
+
+   <target name="createPluginPackageDir">
+      <mkdir dir="${BUILD_DIR}/vsphere_powercli" />
+      <mkdir dir="${BUILD_DIR}/vsphere_powercli/plugins" />
+      <copy todir="${BUILD_DIR}/vsphere_powercli" file="plugin-package.xml"/>
+      <copy todir="${BUILD_DIR}/vsphere_powercli/plugins" file="${BUILD_DIR}/vsphere_powercli-ui.war"/>
+      <copy todir="${BUILD_DIR}/vsphere_powercli/plugins" file="${SERVICE_DIR}/target/vsphere_powercli-service.jar"/>
+      <copy todir="${BUILD_DIR}/vsphere_powercli/plugins" file="${VSPHERE_SDK_HOME}/libs/gson-2.3.1.jar"/>
+   </target>
+
+</project>

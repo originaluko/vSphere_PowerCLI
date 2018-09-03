@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2012-2018 VMware, Inc. All rights reserved. -->
+<!--
+   vsphere_powercli plugin metadata.
+   The <plugin> tag doesn't contain any moduleUri property because it is an HTML plugin.
+-->
+
+<plugin id="com.mycompany.vsphere_powercli.vsphere_powercli"
+      defaultBundle="com_mycompany_vsphere_powercli">
+
+   <resources baseUrl="locales/">
+      <resource>com_mycompany_vsphere_powercli</resource>
+   </resources>
+
+   <dependencies>
+      <!-- Allow HTML Client to display plugin icons in menus, shortcuts, object lists -->
+      <dependency type="css" uri="vsphere_powercli/assets/css/plugin-icons.css" />
+   </dependencies>
+
+    <!-- Home view shortcut -->
+
+   <extension id="com.mycompany.vsphere_powercli.homeShortcut">
+      <extendedPoint>vise.home.shortcuts</extendedPoint>
+      <object>
+         <name>vSphere PowerCLI</name>
+         <icon>#{pluginIcon}</icon>
+         <categoryUid>vsphere.core.controlcenter.inventoriesCategory</categoryUid>
+         <targetViewUid>com.mycompany.vsphere_powercli.mainView</targetViewUid>
+      </object>
+   </extension>
+
+   <!-- Main view -->
+
+   <extension id="com.mycompany.vsphere_powercli.mainView">
+      <extendedPoint>vise.global.views</extendedPoint>
+      <object>
+         <name>vSphere PowerCLI</name>
+         <componentClass className="com.vmware.vsphere.client.htmlbridge.HtmlView">
+            <object>
+               <root>
+                  <url>/ui/vsphere_powercli/resources/mainView.html</url>
+               </root>
+            </object>
+         </componentClass>
+      </object>
+   </extension>
+
+   <!-- Plugin Navigator Main Entry Point -->
+   <extension id="com.mycompany.vsphere_powercli.entryPoint">
+      <extendedPoint>vise.navigator.nodespecs</extendedPoint>
+      <object>
+         <title>vSphere PowerCLI</title>
+         <icon>#{pluginIcon}</icon>
+         <parentUid>vsphere.core.navigator.solutionsCategory</parentUid>
+         <navigationTargetUid>com.mycompany.vsphere_powercli.mainView</navigationTargetUid>
+         <viewOpenedUponFocus className="com.vmware.ui.objectnavigator.views.CategoryNodeTreeView" />
+      </object>
+   </extension>
+
+   <!-- Host monitor sample view -->
+
+   <extension id="com.mycompany.vsphere_powercli.host.monitor">
+      <extendedPoint>vsphere.core.host.monitorViews</extendedPoint>
+      <object>
+         <name>#{monitorTab.label}</name>
+         <componentClass className="com.vmware.vsphere.client.htmlbridge.HtmlView">
+            <object>
+               <root>
+                  <url>/ui/vsphere_powercli/resources/host-monitor.html</url>
+               </root>
+            </object>
+         </componentClass>
+      </object>
+   </extension>
+
+   <!-- Sample Actions on Hosts -->
+
+   <extension id="com.mycompany.vsphere_powercli.actionSet">
+      <extendedPoint>vise.actions.sets</extendedPoint>
+      <object>
+         <actions>
+            <com.vmware.actionsfw.ActionSpec>
+               <uid>com.mycompany.vsphere_powercli.sampleAction1</uid>
+               <label>#{sampleAction1.name}</label>
+               <icon>#{addIcon}</icon>
+               <delegate>
+                  <className>com.vmware.vsphere.client.htmlbridge.HtmlActionDelegate</className>
+                  <object><root>
+                     <!-- actionUrl maps to ActionsController on the java side -->
+                     <actionUrl>/ui/vsphere_powercli/rest/actions</actionUrl>
+                  </root></object>
+               </delegate>
+            </com.vmware.actionsfw.ActionSpec>
+
+             <com.vmware.actionsfw.ActionSpec>
+               <uid>com.mycompany.vsphere_powercli.sampleAction2</uid>
+               <label>#{sampleAction2.name}</label>
+               <icon>#{editIcon}</icon>
+               <delegate>
+                  <className>com.vmware.vsphere.client.htmlbridge.HtmlActionDelegate</className>
+                  <object><root>
+                     <!-- actionUrl can be shared between several actions -->
+                     <actionUrl>/ui/vsphere_powercli/rest/actions</actionUrl>
+                  </root></object>
+               </delegate>
+            </com.vmware.actionsfw.ActionSpec>
+          </actions>
+      </object>
+      <metadata>
+         <objectType>HostSystem</objectType>
+      </metadata>
+   </extension>
+
+   <!--
+      This adds a sub-menu to the Host menu, using the actions defined above
+   -->
+   <extension id="com.mycompany.vsphere_powercli.hostMenu">
+      <extendedPoint>vsphere.core.menus.solutionMenus</extendedPoint>
+      <object>
+         <!-- <label> is required here because it is an extension to an existing menu -->
+         <label>#{sampleMenu.label}</label>
+         <uid>com.mycompany.vsphere_powercli.hostMenu</uid>
+         <children>
+            <Array>
+               <com.vmware.actionsfw.ActionMenuItemSpec>
+                  <type>action</type>
+                  <uid>com.mycompany.vsphere_powercli.sampleAction1</uid>
+               </com.vmware.actionsfw.ActionMenuItemSpec>
+               <com.vmware.actionsfw.ActionMenuItemSpec>
+                  <type>action</type>
+                  <uid>com.mycompany.vsphere_powercli.sampleAction2</uid>
+               </com.vmware.actionsfw.ActionMenuItemSpec>
+            </Array>
+         </children>
+      </object>
+      <metadata>
+         <objectType>HostSystem</objectType>
+      </metadata>
+   </extension>
+
+</plugin>
