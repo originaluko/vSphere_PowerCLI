@@ -8,7 +8,7 @@ vSphere PowerCLI is comprised of two components.  A Docker Image, running an AJA
 
 The plugin was created as a POC (Proof of Concept) to see if a PowerShell session could be run within the new HTML5 based vSphere Client.
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/01.jpg" width="500">
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/01.jpg" width="500">
 
 ## Installation
 
@@ -63,7 +63,7 @@ If you have difficulties copying the two files from the project you can use curl
 
 `curl -O https://labs.ukotic.net/vsphere_powercli/supervisord.conf`
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/09.jpg" width="500">
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/09.jpg" width="500">
  
 ##### Step 5 (Optional).
 Optionally copy the vSphere Client public and private keys to the certificate.pem file in the same location as the Dockerfile and supervisord.conf file.
@@ -78,7 +78,7 @@ Build the Docker Image with the below command.
 
 `docker build -t vsphere-powercli .`
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/10.jpg" width="500"> 
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/10.jpg" width="500"> 
 
 The build process will take a few minutes.  
 
@@ -89,19 +89,19 @@ Currently it’s recommended to run the container on the default port 4200
 
 `docker run -d -p 4200:4200 --name vsphere-powercli vsphere-powercli`
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/11.jpg" width="500">
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/11.jpg" width="500">
 
 You can check if the docker container is running with the below command.
 
 `docker stats`
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/12.jpg" width="500">
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/12.jpg" width="500">
  
 You can check if the port has been mapped correctly by running
 
 `docker port vsphere-powercli` 
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/13.jpg" width="500">
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/13.jpg" width="500">
 
 ##### Step 8.
 Open a web browser and test if you can connect directly to the container
@@ -112,11 +112,11 @@ https://{my_vcsa}:4200
 
 Depending on whether you followed Step 5.  vSphere PowerCLI may generate a Self Signed Certificate.  As a result, you will be presented with a warning prompt to accept the certificate in Step 8.  You must accept this warning once at the start of your browser session prior to running the plugin in the vSphere Client.  This is due to iFrames being used and the web browser not prompting the user when an iFrame uses a Self Signed Certificate.
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/14.jpg" width="500">
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/14.jpg" width="500">
 
 Once you accept any warnings you should receive a login prompt.
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/15.jpg" width="500">
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/15.jpg" width="500">
 
 Once a login prompt is received you have completed the build and configuration of the docker portion of the setup.
 
@@ -132,7 +132,7 @@ If you have difficulties copying the two files from the project to the Docker ho
 
 `curl -O https://labs.ukotic.net/vsphere_powercli/supervisord.conf`
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/02.jpg" width="500">
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/02.jpg" width="500">
  
 ##### Step 2.
 The Dockerfile copies a certificate.pem file created in Option A.  This file is not used in the Option B method and needs to be removed.  Comment out or remove Line 31 in the Dockerfile.
@@ -144,7 +144,7 @@ Build the Docker Image with the below command.
 
 `docker build -t vsphere-powercli .`
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/03.jpg" width="500">
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/03.jpg" width="500">
  
 The build process will take a few minutes.  
 
@@ -155,19 +155,19 @@ Currently it’s recommended to run the container on the default port 4200
 
 `docker run -d -p 4200:4200 --name vsphere-powercli vsphere-powercli`
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/04.jpg" width="500"> 
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/04.jpg" width="500"> 
 
 You can check is the docker container is running with the below command.
 
 `docker stats`
  
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/05.jpg" width="500">
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/05.jpg" width="500">
 
 You can check if the port has been mapped correctly by running
 
 `docker port vsphere-powercli`
  
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/06.jpg" width="500">
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/06.jpg" width="500">
 
 ##### Step 5.
 Open a web browser and test if you can connect directly to the container
@@ -178,11 +178,11 @@ Open a web browser and test if you can connect directly to the container
 
 vSphere PowerCLI currently uses Self Signed Certificates in Option B.  As a result, you will be presented with a warning prompt to accept the certificate.  You must accept this warning once at the start of your browser session prior to running the plugin in the vSphere Client.  This is due to iFrames being used and the browser not prompting the user when an iFrame uses a Self Signed Certificate.
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/07.jpg" width="500">
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/07.jpg" width="500">
  
 Once you accept the warning you should receive a login prompt.
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/08.jpg" width="500"> 
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/08.jpg" width="500"> 
 
 Once a login prompt is received you have completed the build and configuration of the docker portion of the setup.
 
@@ -197,7 +197,7 @@ https://{your_vcsa}/mob/
 
 Sign in with your SSO credentials
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/16.jpg" width="500"> 
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/16.jpg" width="500"> 
 
 ##### Step 2.
 Click on `content`
@@ -208,7 +208,7 @@ Click on `RegisterExtension`
 
 A new window similar to below will Open
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/17.jpg" width="500"> 
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/17.jpg" width="500"> 
 
 ##### Step 3.
 This step will install the java plugin package from an online repo.  You can modify the location and host the plugin from your own web server if you wish using the zip file vsphere_powercli_plugin.zip.  Else continue with the below steps.
@@ -223,7 +223,7 @@ Click `Invoke Method`
 
 If a **void** is return the settings went through successfully.
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/18.jpg" width="500"> 
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/18.jpg" width="500"> 
 
 You can now close the registration window.
 
@@ -241,11 +241,11 @@ Log back in again.
 
 Click on **Menu -> Shortcuts** and you should now see a new icon called **vSphere PowerCLI**
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/19.jpg" width="500"> 
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/19.jpg" width="500"> 
 
 Click on the **vSphere PowerCLI** shortcut
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/20.jpg" width="500"> 
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/20.jpg" width="500"> 
 
 Enter in the IP of the docker host or VCSA where the docker container is deployed and click **Connect**
 
@@ -253,13 +253,13 @@ A login prompt should appear
 
 Sign in with the user *powercli* and the password *password*.
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/21.jpg" width="500"> 
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/21.jpg" width="500"> 
 
 This should take you into a PowerShell prompt with installed PowerCLI modules.
 
 At this point you should be able to run and execute PowerShell commands.  You should be able to make a connection to vCenter as per normal PowerShell processes to login to a vCenter.
 
-<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/Images/22.jpg" width="500"> 
+<img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/22.jpg" width="500"> 
  
 ## Issues
 **vSphere PowerCLI doesn’t connect and you are just left with a grey box.**
