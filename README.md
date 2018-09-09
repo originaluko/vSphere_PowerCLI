@@ -260,8 +260,10 @@ This should take you into a PowerShell prompt with installed PowerCLI modules.
 At this point you should be able to run and execute PowerShell commands.  You should be able to make a connection to vCenter as per normal PowerShell processes to login to a vCenter.
 
 <img src="https://github.com/originaluko/vSphere_PowerCLI/raw/master/images/22.jpg" width="500"> 
+
  
 ## Issues
+
 **vSphere PowerCLI doesn’t connect and you are just left with a grey box.**
 
 If the window is grey after you click save check if you can still browse directly to the container.   {https://ip_of_container_host:4200}
